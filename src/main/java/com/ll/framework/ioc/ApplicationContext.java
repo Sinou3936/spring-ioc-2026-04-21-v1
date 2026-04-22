@@ -8,9 +8,16 @@ import java.util.Map;
 
 public class ApplicationContext {
 
-    public ApplicationContext() {
+    private Map<String, Object> beans = new HashMap<>();
+    private final TestPostService testPostService;
 
+    public ApplicationContext() {
+        this.testPostService = new TestPostService();
+        beans.put("testPostService",testPostService);
     }
 
-    public <T> T genBean(String beanName) { return (T) null;}
+    public <T> T genBean(String beanName) {
+//        return (T) beans.get(beanName);
+        return (T) null;
+    }
 }
