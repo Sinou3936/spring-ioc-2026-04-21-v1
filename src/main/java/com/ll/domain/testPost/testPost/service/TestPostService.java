@@ -6,8 +6,4 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TestPostService {
     private final TestPostRepository testPostRepository;
-
-    public TestPostService() {
-        this.testPostRepository = new TestPostRepository();
-    }
 }

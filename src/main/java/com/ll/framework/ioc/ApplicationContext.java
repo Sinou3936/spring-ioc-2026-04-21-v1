@@ -14,9 +14,10 @@ public class ApplicationContext {
     private final TestPostRepository testPostRepository;
 
     public ApplicationContext() {
-        this.testPostService = new TestPostService();
-        beans.put("testPostService",testPostService);
         this.testPostRepository = new TestPostRepository();
+        this.testPostService = new TestPostService(testPostRepository);
+        beans.put("testPostService",testPostService);
+
     }
 
     public <T> T genBean(String beanName) {
