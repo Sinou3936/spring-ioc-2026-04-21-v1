@@ -25,13 +25,6 @@ public class ApplicationContext {
     }
 
     public <T> T genBean(String beanName) {
-//        if("testPostRepository".equalsIgnoreCase(beanName))
-//            return (T) testPostRepository;
-//        else if("testPostService".equalsIgnoreCase(beanName))
-//            return (T) beans.get(beanName);
-//        else if("testFacadePostService".equalsIgnoreCase(beanName))
-//            return (T)  testFacadePostService;
-//        return null;
         return  (T) beans.get(beanName);
 
     }
