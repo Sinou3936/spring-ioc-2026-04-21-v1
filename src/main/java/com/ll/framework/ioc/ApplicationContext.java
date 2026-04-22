@@ -9,7 +9,6 @@ import java.util.Map;
 
 public class ApplicationContext {
 
-    private Map<String, Object> beans = new HashMap<>();
     private final TestPostService testPostService;
     private final TestPostRepository testPostRepository;
     private final TestFacadePostService testFacadePostService;
@@ -18,14 +17,18 @@ public class ApplicationContext {
         this.testPostRepository = new TestPostRepository();
         this.testPostService = new TestPostService(testPostRepository);
         this.testFacadePostService = new TestFacadePostService(testPostService, testPostRepository);
-        beans.put("testPostRepository",testPostRepository);
-        beans.put("testPostService",testPostService);
-        beans.put("testFacadePostService",testFacadePostService);
 
     }
 
     public <T> T genBean(String beanName) {
-        return  (T) beans.get(beanName);
+       if("testPostService".equalsIgnoreCase(beanName))
+           return (T) testPostService;
+       else if("testPostRepository".equalsIgnoreCase(beanName))
+           return (T) testPostRepository;
+       else if("testFacadePostService".equalsIgnoreCase(beanName))
+           return (T) testFacadePostService;
+       else
+           return null;
 
     }
 }
