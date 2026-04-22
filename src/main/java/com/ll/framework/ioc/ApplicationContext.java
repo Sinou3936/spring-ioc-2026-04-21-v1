@@ -17,7 +17,6 @@ public class ApplicationContext {
     }
 
     public <T> T genBean(String beanName) {
-//        return (T) beans.get(beanName);
-        return (T) null;
+        return (T) beans.get(beanName);
     }
 }
