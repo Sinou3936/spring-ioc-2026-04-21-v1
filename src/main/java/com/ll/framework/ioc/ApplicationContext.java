@@ -12,13 +12,16 @@ public class ApplicationContext {
     private Map<String, Object> beans = new HashMap<>();
     private final TestPostService testPostService;
 
-
     public ApplicationContext() {
         this.testPostService = new TestPostService();
         beans.put("testPostService",testPostService);
+
     }
 
     public <T> T genBean(String beanName) {
-        return (T)beans.get(beanName);
+        if("testPostService".equalsIgnoreCase(beanName))
+            return (T) beans.get(beanName);
+        return null;
+
     }
 }
